@@ -3,9 +3,7 @@ using System;
 namespace BitFields
 {
     /// <summary>
-    /// Unmanaged struct used to represent large collections of flags.
-    /// Use this when the number of unique flags exceeds the capacity of a single integer.
-    /// Words are represented as a fixed-size, unmanaged array of 32-bit unsigned integers.
+    /// Unmanaged struct used to represent a collection of flags.
     /// All standard bitwise operators are implemented ( & | ^ ~ << >> )
     /// </summary>
     public unsafe struct BitField128 : IEquatable<BitField128>
