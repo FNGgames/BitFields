@@ -1,10 +1,11 @@
 using System;
+#pragma warning disable 649
 
 namespace BitFields
 {
     /// <summary>
     /// Unmanaged struct used to represent a collection of flags.
-    /// All standard bitwise operators are implemented ( & | ^ ~ << >> )
+    /// All standard bitwise operators are implemented ( &amp; | ^ ~ &lt;&lt; &gt;&gt; )
     /// </summary>
     public unsafe struct BitField128 : IEquatable<BitField128>
     {
@@ -118,7 +119,7 @@ namespace BitFields
         public void SetBits(in BitField128 mask) => Or(in mask);
 
         /// <summary>
-        /// Sets all the bits that match a mask to 0 ( bits &= ~mask )
+        /// Sets all the bits that match a mask to 0 ( bits &amp;= ~mask )
         /// </summary>
         /// 
         /// <param name="mask">
@@ -227,7 +228,7 @@ namespace BitFields
         // And, Not, Or and XOr are the same operations performed element-by-element on the underlying uints
 
         /// <summary>
-        /// Performs the bitwise boolean operation AND (bits & mask)
+        /// Performs the bitwise boolean operation AND (bits &amp; mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -240,7 +241,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Performs the bitwise boolean operation AND-NOT (bits & ~mask)
+        /// Performs the bitwise boolean operation AND-NOT (bits &amp; ~mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -253,7 +254,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Performs the bitwise boolean operation NAND ~(bits & mask)
+        /// Performs the bitwise boolean operation NAND ~(bits &amp; mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -370,10 +371,11 @@ namespace BitFields
                 for (var i = 0; i < wordCount; i++) words[i] = 0;
                 return;
             }
-            
-            var wholeWordCount = Abs(count / wordLength);
-            var shiftAmount = Abs(count % wordLength);
+
             var rightShift = count > 0;
+            var shiftAmount = Abs(count);
+            var wholeWordCount = shiftAmount / wordLength;
+            shiftAmount %= wordLength; 
             
             if (shiftAmount != 0)
             {
@@ -429,7 +431,7 @@ namespace BitFields
         /// </summary>
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
-        /// <returns>a & b</returns>
+        /// <returns>a &amp; b</returns>
         public static BitField128 operator &(BitField128 a, BitField128 b)
         {
             var c = a;
@@ -441,8 +443,8 @@ namespace BitFields
         /// Bitwise AND on a single bit 
         /// </summary>
         /// <param name="a">Input bits</param>
-        /// <param name="b">Bit index . Throws if index out of range [0:bitCount].</param>
-        /// <returns>a & single index mask</returns>
+        /// <param name="index">Bit index . Throws if index out of range [0:bitCount].</param>
+        /// <returns>a &amp; single index mask</returns>
         public static BitField128 operator &(BitField128 a, int index)
         {
             var c = a;
@@ -523,7 +525,7 @@ namespace BitFields
         /// </summary>
         /// <param name="a">Input bits</param>
         /// <param name="d">Shift amount</param>
-        /// <returns> a left-shifted by d</returns>
+        /// <returns> a &lt;&lt; d</returns>
         public static BitField128 operator <<(BitField128 a, int d)
         {
             var c = a;
@@ -538,7 +540,7 @@ namespace BitFields
         /// </summary>
         /// <param name="a">Input bits</param>
         /// <param name="d">Shift amount</param>
-        /// <returns> a right-shifted by d</returns>
+        /// <returns> a &gt;&gt; d</returns>
         public static BitField128 operator >> (BitField128 a, int d)
         {
             var c = a;
