@@ -57,11 +57,11 @@ namespace BitFields
         #region BIT_MANIPULATION
 
         /// <summary>
-        /// Set a single bit to 1
+        /// Sets a single bit to 1
         /// </summary>
         /// 
         /// <param name="index">
-        /// Index of the bit to set. Throws if out of range [0:127].
+        /// Index of the bit to set. Throws if out of range [0:bitCount].
         /// </param>
         public void SetBit(int index)
         {
@@ -71,11 +71,11 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Set a single bit to 0
+        /// Sets a single bit to 0
         /// </summary>
         /// 
         /// <param name="index">
-        /// Index of the bit to set. Throws if out of range [0:127].
+        /// Index of the bit to set. Throws if out of range [0:bitCount].
         /// </param>
         public void UnsetBit(int index)
         {
@@ -89,7 +89,7 @@ namespace BitFields
         /// </summary>
         /// 
         /// <param name="index">
-        /// Index of the bit to flip. Throws if out of range [0:127].
+        /// Index of the bit to flip. Throws if out of range [0:bitCount].
         /// </param>
         public void FlipBit(int index)
         {
@@ -99,11 +99,11 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Set all the bits at the supplied indices 1
+        /// Sets all the bits at the supplied indices 1
         /// </summary>
         /// 
         /// <param name="indices">
-        /// Array of bit indices
+        /// Array of bit indices. Throws if any are out of range [0:bitCount].
         /// </param>
         public void SetBits(params int[] indices)
         {
@@ -111,7 +111,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Set all the bits that match a mask to 1 ( bits |= mask )
+        /// Sets all the bits that match a mask to 1 ( bits |= mask )
         /// </summary>
         /// 
         /// <param name="mask">
@@ -120,7 +120,7 @@ namespace BitFields
         public void SetBits(in BitField128 mask) => Or(in mask);
 
         /// <summary>
-        /// Set all the bits that match a mask to 0 ( bits &= ~mask )
+        /// Sets all the bits that match a mask to 0 ( bits &= ~mask )
         /// </summary>
         /// 
         /// <param name="mask">
@@ -129,11 +129,11 @@ namespace BitFields
         public void UnsetBits(in BitField128 mask) => AndNot(in mask);
 
         /// <summary>
-        /// Set all the bits at the supplied indices 0
+        /// Sets all the bits at the supplied indices 0
         /// </summary>
         /// 
         /// <param name="indices">
-        /// Array of bit indices
+        /// Array of bit indices. Throws if any are out of range [0:bitCount].
         /// </param>
         public void UnsetBits(params int[] indices)
         {
@@ -150,11 +150,11 @@ namespace BitFields
         public void FlipBits(in BitField128 mask) => XOr(in mask);
 
         /// <summary>
-        /// Flip all the bits at the supplied indices
+        /// Flips all the bits at the supplied indices
         /// </summary>
         /// 
         /// <param name="indices">
-        /// Array of bit indices
+        /// Array of bit indices. Throws if any are out of range [0:bitCount].
         /// </param>
         public void FlipBits(params int[] indices)
         {
@@ -168,11 +168,11 @@ namespace BitFields
         #region QUERIES
 
         /// <summary>
-        /// Get the state of a single bit
+        /// Gets the state of a single bit
         /// </summary>
         /// 
         /// <param name="index">
-        /// Index of the bit
+        /// Index of the bit. Throws if index out of range [0:bitCount].
         /// </param>
         public bool GetBit(int index)
         {
@@ -182,7 +182,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Determine if all bits are set to 0
+        /// Determines if all bits are set to 0
         /// </summary>
         public bool IsEmpty()
         {
@@ -194,7 +194,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Determine if ALL of the bits from a given mask are set 
+        /// Determines if ALL of the bits from a given mask are set 
         /// </summary>
         /// 
         /// <param name="mask">
@@ -203,7 +203,7 @@ namespace BitFields
         public bool HasAllOf(in BitField128 mask) => (this & mask) == mask;
 
         /// <summary>
-        /// Determine if ANY of the bits from a given mask are set 
+        /// Determines if ANY of the bits from a given mask are set 
         /// </summary>
         /// 
         /// <param name="mask">
@@ -212,7 +212,7 @@ namespace BitFields
         public bool HasAnyOf(in BitField128 mask) => !(this & mask).IsEmpty();
 
         /// <summary>
-        /// Determine if NONE of the bits from a given mask are set 
+        /// Determines if NONE of the bits from a given mask are set 
         /// </summary>
         /// 
         /// <param name="mask">
@@ -229,7 +229,7 @@ namespace BitFields
         // And, Not, Or and XOr are the same operations performed element-by-element on the underlying uints
 
         /// <summary>
-        /// Perform the bitwise boolean operation AND (bits & mask)
+        /// Performs the bitwise boolean operation AND (bits & mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -242,7 +242,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Perform the bitwise boolean operation AND-NOT (bits & ~mask)
+        /// Performs the bitwise boolean operation AND-NOT (bits & ~mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -255,7 +255,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Perform the bitwise boolean operation NAND ~(bits & mask)
+        /// Performs the bitwise boolean operation NAND ~(bits & mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -268,7 +268,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Perform the bitwise boolean operation OR (bits | mask)
+        /// Performs the bitwise boolean operation OR (bits | mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -281,7 +281,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Perform the bitwise boolean operation OR-NOT (bits | ~mask)
+        /// Performs the bitwise boolean operation OR-NOT (bits | ~mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -294,7 +294,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Perform the bitwise boolean operation NOR ~(bits | mask)
+        /// Performs the bitwise boolean operation NOR ~(bits | mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -308,7 +308,7 @@ namespace BitFields
 
 
         /// <summary>
-        /// Perform the bitwise boolean operation XOR (bits ^ mask)
+        /// Performs the bitwise boolean operation XOR (bits ^ mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -321,7 +321,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Perform the bitwise boolean operation XOR-NOT (bits ^ ~mask)
+        /// Performs the bitwise boolean operation XOR-NOT (bits ^ ~mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -334,7 +334,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Perform the bitwise boolean operation NOT-XOR ~(bits ^ ~mask)
+        /// Performs the bitwise boolean operation NOT-XOR ~(bits ^ ~mask)
         /// </summary>
         /// 
         /// <param name="mask">
@@ -347,7 +347,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Perform the bitwise boolean operation NOT (~bits)
+        /// Performs the bitwise boolean operation NOT (~bits)
         /// </summary>
         public void Not()
         {
@@ -356,7 +356,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Perform the bitwise boolean operation SHIFT
+        /// Performs the bitwise boolean operation SHIFT
         /// </summary>
         /// 
         /// <param name="count">
@@ -443,8 +443,8 @@ namespace BitFields
         /// Bitwise AND on a single bit 
         /// </summary>
         /// <param name="a">Input bits</param>
-        /// <param name="b">Bit index</param>
-        /// <returns></returns>
+        /// <param name="b">Bit index . Throws if index out of range [0:bitCount].</param>
+        /// <returns>a & single index mask</returns>
         public static BitField128 operator &(BitField128 a, int index)
         {
             var c = a;
@@ -470,8 +470,8 @@ namespace BitFields
         /// Equivalent to SetBit(index)
         /// </summary>
         /// <param name="a">Input bits</param>
-        /// <param name="index">Bit index</param>
-        /// <returns>a |= single index mask</returns>
+        /// <param name="index">Bit index. Throws if index out of range [0:bitCount].</param>
+        /// <returns>a | single index mask</returns>
         public static BitField128 operator |(BitField128 a, int index)
         {
             var c = a;
@@ -497,8 +497,8 @@ namespace BitFields
         /// Equivalent to ToggleBit(index)
         /// </summary>
         /// <param name="a">Input bits</param>
-        /// <param name="index">Bit index</param>
-        /// <returns>a ^= single index mask</returns>
+        /// <param name="index">Bit index. Throws if index out of range [0:bitCount].</param>
+        /// <returns>a ^ single index mask</returns>
         public static BitField128 operator ^(BitField128 a, int index)
         {
             var c = a;
@@ -525,7 +525,7 @@ namespace BitFields
         /// </summary>
         /// <param name="a">Input bits</param>
         /// <param name="d">Shift amount</param>
-        /// <returns> a left-shifted by d </returns>
+        /// <returns> a left-shifted by d</returns>
         public static BitField128 operator <<(BitField128 a, int d)
         {
             var c = a;
@@ -540,7 +540,7 @@ namespace BitFields
         /// </summary>
         /// <param name="a">Input bits</param>
         /// <param name="d">Shift amount</param>
-        /// <returns> a right-shifted by d </returns>
+        /// <returns> a right-shifted by d</returns>
         public static BitField128 operator >> (BitField128 a, int d)
         {
             var c = a;
@@ -549,7 +549,7 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Check if the bits of a and b are equal
+        /// Determines if the bits of a and b are equal
         /// </summary>
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
@@ -557,7 +557,7 @@ namespace BitFields
         public static bool operator ==(BitField128 a, BitField128 b) => a.Equals(b);
 
         /// <summary>
-        /// Check if the bits of a and b are not equal
+        /// Determines if the bits of a and b are not equal
         /// </summary>
         /// <param name="a">First operand</param>
         /// <param name="b">Second operand</param>
@@ -570,6 +570,10 @@ namespace BitFields
 
         #region INDEXER
 
+        /// <summary>
+        /// Indexer into the bits for direct setting or querying.
+        /// </summary>
+        /// <param name="index">Index of the bit. Throws if not in the range [0:bitCount]</param>
         public bool this[int index]
         {
             get => GetBit(index);
@@ -587,8 +591,8 @@ namespace BitFields
         #region ENUMERATOR
 
         /// <summary>
-        /// Enumerates the bits of the array from least-significant to
-        /// most-significant. It is safe to change the array while enumerating.
+        /// Enumerates the bits of the array from least-significant to most-significant.
+        /// It is safe to change the array while enumerating.
         /// </summary>
         public ref struct Enumerator
         {
@@ -660,11 +664,11 @@ namespace BitFields
         }
 
         /// <summary>
-        /// Get an enumerator for this array's bits
+        /// Get an enumerator for the bits of this bit-field
         /// </summary>
         /// 
         /// <returns>
-        /// An enumerator for this array's bits
+        /// An enumerator for  the bits of this bit-field
         /// </returns>
         public Enumerator GetEnumerator()
         {
