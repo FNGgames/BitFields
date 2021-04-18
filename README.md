@@ -1,8 +1,8 @@
 # BitFields
 
-Unmanaged structs for representing large collections of flags.<br>
+Unmanaged structs for representing large collections of flags and performing bitwise arithmatic on them.<br>
 Flag bits are stored in the binary bits of an unmanaged array of UInt32s.<br>
-These structs provide a unified interface for performing bitwise operations on the flag collection.<br>
+No managed memory is allocated by these structs.
 
 # API
 
