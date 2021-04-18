@@ -26,8 +26,9 @@ HasNoneOf(BitField mask) - Are _NONE_ of the flags in the given mask set in the 
 
 ## Indexing and Enumeration
 
-Indexer `this[int index]` for indexing directly into the bits. (e.g. `b[1] = true; b[3] = !b[4]`).
-Enumerable in C#7 or later (requires `ref struct` in the inumerator to allow pointer manipulation).
+Indexer `this[int index]` for indexing directly into the bits. (e.g. `b[3] = !b[4]`).
+
+Enumerable in C#7 or later (requires `ref struct` in the enumerator to allow pointer manipulation).
 
 ## IEquatable
 
