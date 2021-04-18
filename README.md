@@ -28,6 +28,7 @@ The operations mutate the data in this struct, usual caveats for mutable value-t
 
 Static bitwise operators ( `& | ^ ~ << >>` ) for bitwise arithmetic.<br>
 Operators allocate new copies on the stack like any other value type.<br>
+Operations are O(n) where n is the number of words that make up the bit field.<br>
 
 ## Queries
 
