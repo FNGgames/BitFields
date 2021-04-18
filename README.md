@@ -14,8 +14,8 @@ Get / Set / Unset / Flip _multiple bits_ using another bitfield as a mask (e.g. 
 
 ## Bitwise Operators
 
-Static bitwise operators ( & | ^ ~ << >> ) are implemented for performing custom bitwise arithmatic.<br>
-These operators allocate new bitfields on the stack and return them, as if they were any other value type.<br>
+Static bitwise operators ( & | ^ ~ << >> ) for bitwise arithmatic.<br>
+Operators allocate new copies on the stack like any other value type.<br>
 
 ## Queries
 
