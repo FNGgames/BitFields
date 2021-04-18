@@ -1,7 +1,6 @@
 # BitFields
 
 Unmanaged structs for representing large collections of flags.<br>
-Use this when the collection of flags is larger than the capacity of a single uint.<br>
 Flag bits are stored in the binary bits of an unmanaged array of UInt32s.<br>
 These structs provide a unified interface for performing bitwise operations on the flag collection.<br>
 
