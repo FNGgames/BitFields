@@ -9,7 +9,7 @@ These structs provide a unified interface for performing bitwise operations on t
 
 ## Bit Manipulation
 
-Get / Set / Unset / Flip a _single bit_ using the index of that bit (e.g. `b.ToggleBit(5); b.SetBit(0,1,2);`)
+Get / Set / Unset / Flip a _single bit_ using the index of that bit (e.g. `b.ToggleBit(5); b.SetBit(0,1,2);`)\n
 Get / Set / Unset / Flip _multiple bits_ using another bitfield as a mask (e.g. `b.SetBits(mask);`)
 
 ## Bitwise Operators
