@@ -10,7 +10,7 @@ These structs provide a unified interface for performing bitwise operations on t
 ## Bit Manipulation
 
 Get / Set / Unset / Flip a _single bit_ using the index of that bit.<br>
-The operations mutate the data in this struct, usual caveats for mutable value-types apply.<b>
+The operations mutate the data in this struct, usual caveats for mutable value-types apply.<br>
 
 `GetBit(int index);`<br>
 `SetBit(int index);`<br>
@@ -18,7 +18,7 @@ The operations mutate the data in this struct, usual caveats for mutable value-t
 `FlipBit(int index);`<br>
 
 Get / Set / Unset / Flip _multiple bits_ using another bitfield as a mask<br>
-The operations mutate the data in this struct, usual caveats for mutable value-types apply.<b>
+The operations mutate the data in this struct, usual caveats for mutable value-types apply.<br>
 
 `GetBits(BitField mask);`<br>
 `SetBits(BitField mask);`<br>
@@ -40,9 +40,9 @@ Operators allocate new copies on the stack like any other value type.<br>
 ## Indexing and Enumeration
 
 Indexer `this[int index]` for indexing directly into the bits. (e.g. `b[3] = !b[4]`).<br>
-Set operations mutate the data in this struct, usual caveats for mutable value-types apply.<b>
-Enumerable in C#7 or later<b>
-It is safe to alter the structure while enumerating.<b>
+Set operations mutate the data in this struct, usual caveats for mutable value-types apply.<be>
+Enumerable in C#7 or later<be>
+It is safe to alter the structure while enumerating.<be>
 
 ## IEquatable
 
