@@ -1,6 +1,6 @@
 # BitFields
 
-Unmanaged structs for representing large collections of flags and performing bitwise arithmatic on them.<br>
+Unmanaged structs for representing large collections of flags and performing bitwise arithmetic on them.<br>
 Flag bits are stored in the binary bits of an unmanaged array of UInt32s.<br>
 No managed memory is allocated by these structs.
 
@@ -26,7 +26,7 @@ The operations mutate the data in this struct, usual caveats for mutable value-t
 
 ## Bitwise Operators
 
-Static bitwise operators ( `& | ^ ~ << >>` ) for bitwise arithmatic.<br>
+Static bitwise operators ( `& | ^ ~ << >>` ) for bitwise arithmetic.<br>
 Operators allocate new copies on the stack like any other value type.<br>
 
 ## Queries
