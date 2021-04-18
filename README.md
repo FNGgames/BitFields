@@ -41,8 +41,8 @@ Operators allocate new copies on the stack like any other value type.<br>
 
 Indexer `this[int index]` for indexing directly into the bits. (e.g. `b[3] = !b[4]`).<br>
 Set operations mutate the data in this struct, usual caveats for mutable value-types apply.<be>
-Enumerable in C#7 or later<be>
-It is safe to alter the structure while enumerating.<be>
+Enumerable in C#7 or later.<br>
+It is safe to alter the structure while enumerating.<br>
 
 ## IEquatable
 
